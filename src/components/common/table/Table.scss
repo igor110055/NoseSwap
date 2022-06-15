@@ -1,0 +1,39 @@
+
+.table {
+    @apply rounded-3xl;
+
+    thead {
+        background-color: #303F50;
+
+        tr th{
+            @apply p-2 py-4 font-medium;
+        }
+    }
+
+    
+    tbody {
+        background-color: #263240;
+
+        tr td{
+            @apply p-2;
+        }
+    }
+
+    table tbody tr:hover {
+        background-color: black;
+      }
+
+      td, th {
+        text-align: left;
+        padding: 8px;
+      }      
+      
+      tr:first-child th:first-child {
+        border-top-left-radius: 6px;
+      }
+      
+      
+      tr:first-child th:last-child {
+        border-top-right-radius: 10px;
+      }
+}
