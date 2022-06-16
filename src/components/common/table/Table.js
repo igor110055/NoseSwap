@@ -7,7 +7,7 @@ const Table = ({tHeadData, tBodyData}) => {
         <>
             <p></p>
             <div>
-            <table className="table">
+            <table className="border-0 table">
                 <thead className="">
                     {tHeadData}
                 </thead>

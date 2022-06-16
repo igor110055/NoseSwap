@@ -12,6 +12,7 @@ import Login from './views/Login';
 import SignUp from './views/SignUp';
 import StakingReward from './views/StakingReward';
 import CryptoAssets from './views/CryptoAssets';
+import MyWallet from './views/MyWallet';
 import Providers from './views/Providers';
 import Calculator from './views/Calculator';
 import Privacy from './views/Privacy';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/stakingReward" element={<StakingReward />} />
         <Route path="/cryptoassets" element={<CryptoAssets />} />
+        <Route path="/mywallet" element={<MyWallet />} />
         <Route path="/providers" element={<Providers />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/privacy" element={<Privacy />} />

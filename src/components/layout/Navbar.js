@@ -23,7 +23,7 @@ const Navbar = () => {
 
                         <div className="hidden sm:flex text-white gap-3">
                             <Link to="/providers"><p>Staking Providers</p></Link>
-                            <Link to="/cryptoassets"><p>My Wallet</p></Link>
+                            <Link to="/mywallet"><p>My Wallet</p></Link>
                             <p>Journal</p>
                         </div>
 

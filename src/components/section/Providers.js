@@ -4,7 +4,7 @@ import Table from './../common/table/Table';
 
 const StakingProviders = () => {
 
-    const [currentNav, setCurrentNav] = useState("Providers");
+    const [currentNav, setCurrentNav] = useState("Staking Provider");
 
     const nav = [
         {type: "Staking Provider"},
@@ -15,17 +15,16 @@ const StakingProviders = () => {
         <>
             <div className="cryptoAsset">
                 <div className="py-10">
-                    
                     <div className="text-sm font-medium text-center text-white border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
                         <ul className="flex flex-wrap mb-5 justify-center">
                             {
                                 nav.map((row) => {
                                     return (
-                                        <li className="mr-2 w-100">
+                                        <li className="mr-2 w-100" key={row.type}>
                                             <a 
                                                 onClick={() => setCurrentNav(row.type)}
                                                 href="#" 
-                                                className={`${ currentNav == row.type ? 'border-b-2 border-[#F4BC1D]' : '' } inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:border-[#F4BC1D] dark:hover:text-gray-300`}
+                                                className={`${ currentNav === row.type ? 'border-b-2 border-[#F4BC1D]' : '' } inline-block p-4 rounded-t-lg hover:border-[#F4BC1D] dark:hover:text-gray-300`}
                                             >
                                                 {row.type}
                                             </a>

@@ -22,7 +22,7 @@ const Footer = () => {
 
                         <div className="mt-3">
                             <h1 className="footer_title">Quick Links</h1>
-                            <hr class="solid"/>
+                            <hr className="solid"/>
                             <div className="mt-5">
                                 <p className="footer_text">- Home</p>
                                 <p className="footer_text">- Swap</p>
@@ -34,7 +34,7 @@ const Footer = () => {
 
                         <div className="mt-3">
                             <h1 className="footer_title">Help</h1>
-                            <hr class="solid"/>
+                            <hr className="solid"/>
                             <div className="mt-5">
                                 <p className="footer_text">- Support</p>
                                 <p className="footer_text">- Teams & Conditions</p>
@@ -44,7 +44,7 @@ const Footer = () => {
 
                         <div className="mt-3">
                             <h1 className="footer_title">Newsletter</h1>
-                            <hr class="solid"/>
+                            <hr className="solid"/>
                             <div className="mt-5">
                                 <p className="footer_text">Duis aute irure dolor in reprehen derit in velit.</p>
                             </div>
@@ -58,7 +58,6 @@ const Footer = () => {
 
                                 <img src="/img/mail.png" style={{marginLeft: "-40px"}} alt="" />
                             </div>
-
                         </div>
                     </div>
 

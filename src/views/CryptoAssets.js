@@ -18,7 +18,7 @@ function CryptoAssets(props) {
                 
                 <div className="bg-third">
                     <div className="n-container">
-                        <StakeableAssets />
+                        <StakeableAssets key={"stakeableassets"} />
                     </div>
                 </div>
 

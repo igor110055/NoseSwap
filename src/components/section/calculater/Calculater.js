@@ -16,10 +16,10 @@ const StakingProviders = () => {
                 <div className="grid grid-cols-2 gap-4 mt-5">
                     <div>
                         <p className="text-white text-lg">Choose your wallet</p>
-                        <div className="flex justify-between text-white items-center bg-[#303F50] p-2 mt-2">
-                            <p>Ethereum 2.0</p>
-                            <img src="/img/down_arrow.png" width={"12"} alt="" />
-                        </div>
+                        <select className="flex justify-between text-white items-center bg-[#303F50] p-2 mt-2 width-100">
+                            <option value="A" selected>Ethereum 1.0</option>
+                            <option value="B">Ethereum 2.0</option>
+                        </select>
                     </div>
         
 
