@@ -36,7 +36,11 @@ const Login = () => {
                             </div>
 
                             <div className="flex justify-between mt-5">
-                                <p className="text-sm items-center flex gap-1"><input type={"checkbox"} /> Remember Me</p> 
+                                <p className="text-sm items-center flex gap-1">
+                                <label className="checkbox">
+                                    <input type="checkbox"/>
+                                    <span>Remember me</span>
+                                </label></p> 
                                 <p className="text-sm text-[#FFC5DD]">Forgot Password?</p>
                             </div>
 

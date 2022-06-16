@@ -45,8 +45,10 @@ const SingUp = () => {
                             </div>
 
                             <p className="mt-2 text-sm items-center flex gap-1">
-                                <input type={"checkbox"} /> 
-                                I agree to Staking Rewards <span className="text-[#F4BC1D]">Terms of Service</span> & <span className="text-[#F4BC1D]">Privacy Policy</span>
+                                <label className="checkbox">
+                                    <input type="checkbox"/>
+                                    <span>I agree to Staking Rewards <span className="text-[#F4BC1D]">Terms of Service</span> & <span className="text-[#F4BC1D]">Privacy Policy</span></span>
+                                </label>
                             </p>
 
                             <button className="w-full bg-[#FFC5DD] text-white mt-5 h-10 rounded">

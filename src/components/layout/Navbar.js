@@ -12,7 +12,7 @@ const Navbar = () => {
                 <div className="n-container">
                     <div className="flex justify-between items-center">
                         <Link to={"/"}>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-5">
                                     <img src="/img/logo.svg" alt="logo" className="h-12 sm:h-16" />
                                     <div>
                                         <p className="text-white fontweight-semibold text-4xl tracking-widest font-black fontfamily-poppins">Nose Swap</p>
@@ -21,19 +21,19 @@ const Navbar = () => {
                             </div>
                         </Link>
 
-                        <div className="hidden sm:flex text-white gap-3">
+                        <div className="hidden sm:flex text-white gap-5">
                             <Link to="/providers"><p>Staking Providers</p></Link>
                             <Link to="/mywallet"><p>My Wallet</p></Link>
                             <p>Journal</p>
                         </div>
 
-                        <div className="hidden sm:flex gap-4">
+                        <div className="hidden sm:flex gap-5">
                             <Link to={"search"}><button className="border border-white h-10 px-2 rounded"><img src='/img/search.png' /></button></Link>
                             <Link to={"signup"}><button className="border border-white h-10 px-2 text-white rounded">Sign Up</button></Link>
                             <Link to={"login"}><button className="px-4 text-white h-10 bg-[#FFC5DD] rounded">Login</button></Link>
                         </div>
 
-                        <p className="none sm:hidden text-white pointer" onClick={() => toggleModal(true)} >&#9776;</p>
+                        {/* <p className="none sm:hidden text-white pointer" onClick={() => toggleModal(true)} >&#9776;</p> */}
                     </div>
                 </div>
                     
