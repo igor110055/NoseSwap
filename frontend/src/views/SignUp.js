@@ -11,7 +11,7 @@ const SingUp = () => {
     const [password, setPassword] = useState("123123123");
     const [confirmpassword, setConfirmPassword] = useState("123123123");
     const [check, setCheck] = useState("");
-    const onSignup = () => {
+    const onSignup = async () => {
         if (check===false) {
             alert("Checked");
             return;
@@ -20,7 +20,7 @@ const SingUp = () => {
             alert("Not same password");
             return;
         }
-        dispatch(register({email:email, password:password}));
+        alert(await dispatch(register({email:email, password:password})));
     }
     return (
         <>

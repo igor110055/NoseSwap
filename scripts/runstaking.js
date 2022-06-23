@@ -36,7 +36,7 @@ function saveFrontendFiles(token) {
   const TokenArtifact = artifacts.readArtifactSync("NoseStaking");
 
   fs.writeFileSync(
-    frontendContractsDir + "/NFT.json",
+    frontendContractsDir + "/NoseStaking.json",
     JSON.stringify(TokenArtifact, null, 2)
   );
 }

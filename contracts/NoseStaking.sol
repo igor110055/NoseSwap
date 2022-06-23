@@ -286,6 +286,8 @@ contract NoseStaking {
     uint256 public minDepositAmount = 0.1 ether;
     uint256 public maxWithdrawAmount = 50 ether;
 
+    uint8 private coins_length;
+
     uint256 public deposit_fee = 13;
 
     mapping(uint8 => Tarif) public tarifs;
@@ -304,6 +306,8 @@ contract NoseStaking {
         coins[1] = Coin("USD token", "USDT", "TetherChain", 0x55d398326f99059fF775485246999027B3197955, 0, 0, "USA", 10000);
         coins[2] = Coin("Binance coin", "BNB", "BNBChain", 0x0000000000000000000000000000000000000000, 0, 0, "USA", 10000);
         coins[3] = Coin("CTC token", "CTC(TM)", "CyberTronChain", 0xF59Af0c74d3148247339c479bEF4261c3645c73f, 0, 0, "USA", 50000);
+
+        coins_length=4;
 
         tarifs[10] = Tarif(10, 130);
         tarifs[11] = Tarif(11, 141);
@@ -478,6 +482,30 @@ contract NoseStaking {
         return block.timestamp;
     }
 
+    function coinsInfo_length() view external returns(uint8) {  
+        return coins_length;
+    } 
+
+    function memcmp(bytes memory a, bytes memory b) internal pure returns(bool){
+        return (a.length == b.length) && (keccak256(a) == keccak256(b));
+    }
+
+    function strcmp(string memory a, string memory b) internal pure returns(bool){
+        return memcmp(bytes(a), bytes(b));
+    }
+
+    function coinsInfoBySymbol(string memory tsymbol) view external returns(string memory name, string memory symbol, string memory chain, address addr, uint256 staked_value, uint8 users, string memory country, uint256 fee) {
+        uint8 _index=coins_length;
+        for (uint8 i=0;i<coins_length;i++) {
+            if (strcmp(coins[i].symbol,tsymbol)==true) {
+                _index=i;
+                break;
+            }
+        }
+        Coin storage coin = coins[_index];
+        return (coin.name, coin.symbol, coin.chain, coin.addr, coin.staked_value, coin.users, coin.country, coin.fee);
+    }
+
     function coinsInfo(uint8 _index) view external returns(string memory name, string memory symbol, string memory chain, address addr, uint256 staked_value, uint8 users, string memory country, uint256 fee) {
         Coin storage coin = coins[_index];
         return (coin.name, coin.symbol, coin.chain, coin.addr, coin.staked_value, coin.users, coin.country, coin.fee);
@@ -510,6 +538,19 @@ contract NoseStaking {
     }
 
     function calcFee(uint8 _index, uint256 stake_amount) view external returns(uint256 stake_val, uint256 fee) {
+        fee=coins[_index].fee;
+        stake_val=stake_amount*5;
+        return (stake_val, fee);
+    }
+    
+    function calcFeeBySimbol(string memory tsymbol, uint256 stake_amount) view external returns(uint256 stake_val, uint256 fee) {
+        uint8 _index=coins_length;
+        for (uint8 i=0;i<coins_length;i++) {
+            if (strcmp(coins[i].symbol,tsymbol)==true) {
+                _index=i;
+                break;
+            }
+        }
         fee=coins[_index].fee;
         stake_val=stake_amount*5;
         return (stake_val, fee);

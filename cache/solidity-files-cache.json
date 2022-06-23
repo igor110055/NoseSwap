@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "E:\\Dummy\\Helper\\hardhat\\contracts\\NoseStaking.sol": {
-      "lastModificationDate": 1655923293945,
-      "contentHash": "17731bdd9b488ab792c2a433ab15ff7a",
+    "E:\\Dummy\\6.14\\NoseSwap\\contracts\\NoseStaking.sol": {
+      "lastModificationDate": 1655995155269,
+      "contentHash": "1b25652435a0aebab270a0849531f76e",
       "sourceName": "contracts/NoseStaking.sol",
       "solcConfig": {
         "version": "0.8.0",

@@ -2,6 +2,7 @@
 import Web3EthContract from "web3-eth-contract";
 import Web3 from "web3";
 import SmartContract from "../contracts/NoseStaking.json";
+import address from "../contracts/contract-address.json";
 // log
 // import { fetchData } from "../data/dataActions";
 
@@ -52,7 +53,7 @@ export const connect = () => {
         if (networkId == 4) { // IMPORTANT. ONCE YOUR CONTRACT IS ON THE MAIN NET, SWITCH THIS NUMBER TO 1.
           const SmartContractObj = new Web3EthContract(
             SmartContract.abi,
-            "0x92F7d0Fb62b17A8b5BAD538438ab1F00B09f3a69" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
+            address.Token // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
           dispatch(
             connectSuccess({
@@ -68,6 +69,7 @@ export const connect = () => {
           ethereum.on("chainChanged", () => {
             window.location.reload();
           });
+          return "success";
           // Add listeners end
         } else {
           dispatch(connectFailed("Change network to Ethereum."));
@@ -78,6 +80,7 @@ export const connect = () => {
     } else {
       dispatch(connectFailed("Please install Metamask."));
     }
+    return "failed";
   };
 };
 

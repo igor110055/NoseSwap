@@ -1,19 +1,42 @@
-import React, { useEffect } from "react";
-
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Title from '../components/common/title/Title';
 import { connect } from "../actions/blockchain";
+import { login, logout } from "../actions/auth";
 
 const Login = () => {
     const dispatch = useDispatch();
-    function ConnectWallet() {
+    const blockchain = useSelector((state)=>state.blockchain);
+    const navigate = useNavigate();
+    
+    const [email, setEmail] = useState("JackySmithH2003@gmail.com");
+    const [password, setPassword] = useState("123123123");
+    const [check, setCheck] = useState("");
+
+    const onSignin = async () => {
+        if (check===false) {
+            alert("Checked");
+            return;
+        }
+        const res = await dispatch(login(email, password));
+        alert(res);
+        console.log("login:",res);
+        if (res==="success") {
+            const res = await ConnectWallet();
+            console.log("connected:",res);
+            if (res==="success") {
+                navigate('/providers');
+            }
+        }
+    }
+    const ConnectWallet = async() => {
         console.log("-----connect function------");
-        dispatch(connect());
+        return dispatch(connect());
         console.log("----/connect function/-----");
     }
 
     useEffect(() => {
-        ConnectWallet();
     }, []);
 
     return (
@@ -34,6 +57,8 @@ const Login = () => {
                                     type={"text"} 
                                     placeholder="Enter email" 
                                     className="py-2 px-4 w-full bg-[#24303E] mt-2 rounded" 
+                                    defaultValue={email}
+                                    onChange={e=>{setEmail(e.target.value)}}
                                 />    
                             </div>
                             
@@ -43,19 +68,21 @@ const Login = () => {
                                     type={"password"} 
                                     placeholder="Enter password" 
                                     className="py-2 px-4 w-full bg-[#24303E] mt-2 rounded" 
+                                    defaultValue={password}
+                                    onChange={e=>{setPassword(e.target.value)}}
                                 />
                             </div>
 
                             <div className="flex justify-between mt-5">
                                 <p className="text-sm items-center flex gap-1">
                                 <label className="checkbox">
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" onChange={e => { setCheck(e.target.checked) }} checked/>
                                     <span>Remember me</span>
                                 </label></p> 
                                 <p className="text-sm text-[#FFC5DD]">Forgot Password?</p>
                             </div>
 
-                            <button className="w-full bg-[#FFC5DD] text-white mt-5 h-10 rounded">
+                            <button className="w-full bg-[#FFC5DD] text-white mt-5 h-10 rounded" onClick={()=>{onSignin()}}>
                                 LOGIN
                             </button>
 

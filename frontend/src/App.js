@@ -59,7 +59,7 @@ function App() {
           <Route path="/providers" element={<Providers />} />
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/staking" element={<Staking />} />
+          <Route path="/staking/:symbol" element={<Staking />} />
         </Routes>
         <Footer />
       </Router>

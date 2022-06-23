@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -41,7 +40,7 @@ const StakingProviders = () => {
     const onClickStake = (index) => {
         coins[index].index=index;
         console.log(coins[index]);
-        navigate('/staking', {state: coins[index]});
+        navigate(`/staking/${coins[index].symbol}`);
     }
 
     const getData = () => {

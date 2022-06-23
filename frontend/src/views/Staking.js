@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import Title from '../components/common/title/Title';
 import Calculater from '../components/section/calculater/Calculater';
@@ -8,8 +9,9 @@ import NewsLetter from '../components/section/NewsLetter';
 import PrivacySection from '../components/section/privacySection/PrivacySection';
 
 function Staking() {
-    const { state }= useLocation();
-    const { index, name, symbol, address, chain, staked_value, users, country } = state;
+    const params = useParams();
+    const { symbol } = params;
+    const index=0;
     const blockchain = useSelector((state)=>state.blockchain);
     const [staking_amount, setStakingAmount] = useState(0);
     const [staking_days, setStakingDays] = useState(1000);
@@ -27,8 +29,7 @@ function Staking() {
     }
 
     useEffect(() => {
-        
-        blockchain.smartContract.methods.calcFee(index, staking_amount).call().then((res)=>{
+        blockchain.smartContract.methods.calcFeeBySimbol(symbol, staking_amount).call().then((res)=>{
             setStakingValue(res.stake_val);
             setStakingFee(res.fee/10000);
         });
@@ -51,7 +52,7 @@ function Staking() {
             <div className="">
 
                 <Title 
-                    title={"This is Staking page for "+name+"."}
+                    title={"This is Staking page for "+symbol+"."}
                     subTitle={
                         <>
                             <p className='text-white text-center'>We’re committed to protecting and respecting your privacy. We use your data to provide and improve the Service only.</p>

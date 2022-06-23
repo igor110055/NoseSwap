@@ -22,6 +22,8 @@ export const loadUser = () => async (dispatch) => {
   try {
     const res = await api.get('/auth');
 
+    console.log("loadUser:",res);
+
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -36,14 +38,16 @@ export const loadUser = () => async (dispatch) => {
 // Register User
 export const register = (formData) => async (dispatch) => {
   try {
-    console.log(formData);
-    const res = await api.post('/auth/register', {email:formData.email, password:formData.password});
+    const res = await api.post('/auth/register', formData);
+
+    console.log("register:",res);
 
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data
     });
     dispatch(loadUser());
+    return "success";
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -54,15 +58,19 @@ export const register = (formData) => async (dispatch) => {
     dispatch({
       type: REGISTER_FAIL
     });
+    return "failed";
   }
 };
 
 // Login User
 export const login = (email, password) => async (dispatch) => {
   const body = { email, password };
+  console.log("body:",body);
 
   try {
-    const res = await api.post('/auth', body);
+    const res = await api.post('/auth/login', body);
+
+    console.log("result:",res);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -70,6 +78,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     dispatch(loadUser());
+    return "success";
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -80,6 +89,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: LOGIN_FAIL
     });
+    return "failed";
   }
 };
 
