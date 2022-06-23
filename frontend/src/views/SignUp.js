@@ -1,10 +1,27 @@
-import React from "react";
-
+import React, {useEffect, useState} from "react";
+import { register } from "../actions/auth";
 import Title from '../components/common/title/Title';
 
-
+import { useDispatch, useSelector } from "react-redux";
 
 const SingUp = () => {
+    const dispatch = useDispatch();
+
+    const [email, setEmail] = useState("JackySmithH2002@gmail.com");
+    const [password, setPassword] = useState("123123123");
+    const [confirmpassword, setConfirmPassword] = useState("123123123");
+    const [check, setCheck] = useState("");
+    const onSignup = () => {
+        if (check===false) {
+            alert("Checked");
+            return;
+        }
+        if (password!==confirmpassword) {
+            alert("Not same password");
+            return;
+        }
+        dispatch(register({email:email, password:password}));
+    }
     return (
         <>
             <div className="">
@@ -18,11 +35,13 @@ const SingUp = () => {
                         <div className="max-w-[400px] w-11/12 m-auto text-white">
 
                             <div>
-                                <p>Coin Address</p>
+                                <p>Email Address</p>
                                 <input 
                                     type={"email"} 
                                     placeholder="Enter address" 
                                     className="py-2 px-4 w-full bg-[#24303E] mt-2 rounded" 
+                                    defaultValue={email}
+                                    onChange={e=>{setEmail(e.target.value)}}
                                 />    
                             </div>
 
@@ -32,6 +51,8 @@ const SingUp = () => {
                                     type={"password"} 
                                     placeholder="Enter password" 
                                     className="py-2 px-4 w-full bg-[#24303E] mt-2 rounded" 
+                                    defaultValue={password}
+                                    onChange={e=>{setPassword(e.target.value)}}
                                 />
                             </div>
 
@@ -41,17 +62,19 @@ const SingUp = () => {
                                     type={"password"} 
                                     placeholder="Enter re-password" 
                                     className="py-2 px-4 w-full bg-[#24303E] mt-2 rounded" 
+                                    defaultValue={confirmpassword}
+                                    onChange={e=>{setConfirmPassword(e.target.value)}}
                                 />
                             </div>
 
                             <p className="mt-2 text-sm items-center flex gap-1">
                                 <label className="checkbox">
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" onChange={e => { setCheck(e.target.checked) }} checked/>
                                     <span>I agree to Staking Rewards <span className="text-[#F4BC1D]">Terms of Service</span> & <span className="text-[#F4BC1D]">Privacy Policy</span></span>
                                 </label>
                             </p>
 
-                            <button className="w-full bg-[#FFC5DD] text-white mt-5 h-10 rounded">
+                            <button className="w-full bg-[#FFC5DD] text-white mt-5 h-10 rounded" onClick={()=>{onSignup()}}>
                                 SIGN UP
                             </button>
 

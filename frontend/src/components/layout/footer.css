@@ -19,5 +19,5 @@
 hr.solid {
     height:3px;
     border-width:0;
-    /* background:url(/public/img/border_bottom.svg) bottom left no-repeat; */
+    background:url('../../images/border_bottom.svg') bottom left no-repeat;
 }

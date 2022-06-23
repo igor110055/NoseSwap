@@ -1,8 +1,22 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const path = require('path');
+const cors = require("cors");
 
 const app = express();
+
+var corsOptions = {
+  origin: "http://localhost:8081",
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(express.json()); /* bodyParser.json() is deprecated */
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(
+  express.urlencoded({ extended: true })
+); /* bodyParser.urlencoded() is deprecated */
 
 // Connect Database
 connectDB();
@@ -11,21 +25,11 @@ connectDB();
 app.use(express.json());
 
 // Define Routes
-app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/profile', require('./routes/api/profile'));
-app.use('/api/posts', require('./routes/api/posts'));
 
-// Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-
+// set port, listen for requests
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});

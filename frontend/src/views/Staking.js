@@ -26,12 +26,21 @@ function Staking() {
         }
     }
 
-    const onStake = () => {
-        console.log(index, staking_amount, staking_days);
+    useEffect(() => {
+        
         blockchain.smartContract.methods.calcFee(index, staking_amount).call().then((res)=>{
             setStakingValue(res.stake_val);
             setStakingFee(res.fee/10000);
         });
+
+    }, [staking_amount])
+
+    const onStake = () => {
+        // console.log(index, staking_amount, staking_days);
+        // blockchain.smartContract.methods.calcFee(index, staking_amount).call().then((res)=>{
+        //     setStakingValue(res.stake_val);
+        //     setStakingFee(res.fee/10000);
+        // });
     }
 
     useEffect(() => {

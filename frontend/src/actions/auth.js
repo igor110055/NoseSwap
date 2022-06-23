@@ -36,7 +36,8 @@ export const loadUser = () => async (dispatch) => {
 // Register User
 export const register = (formData) => async (dispatch) => {
   try {
-    const res = await api.post('/users', formData);
+    console.log(formData);
+    const res = await api.post('/auth/register', {email:formData.email, password:formData.password});
 
     dispatch({
       type: REGISTER_SUCCESS,

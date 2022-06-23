@@ -12,6 +12,10 @@ const StakingProviders = () => {
     const blockchain = useSelector((state)=>state.blockchain);
     const [coins, setCoins] = useState([]);
 
+    useEffect(() => {
+        
+    }, [])
+
     // const coins = [
     //     {name:"Ethereum", symbol:"ETH", address:"", chain:"EthereumChain", staked_value:0, users: 0, country: "USA"},
     //     // {name:"XRP", address:"", chain:"EthereumChain"},
